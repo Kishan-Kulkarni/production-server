@@ -1,0 +1,62 @@
+const mongoose=require('mongoose')
+const Schema=mongoose.Schema
+const postSchema=new Schema({
+    userId:{
+        type:Schema.ObjectId,
+        required:true
+    },
+    pictureURLs:{
+        type:[String],
+        default:[]
+    },
+    name:{
+        type:String,
+        required:true
+    },
+    description:{
+        type:String,
+        required:true
+    },
+    address:{
+        type:String,
+        required:true
+    },
+    sell:{
+        type:Boolean,
+        default:false
+    },
+    parking:{
+        type:Boolean,
+        default:false
+    },
+    furnished:{
+        type:Boolean,
+        default:false
+    },
+    offer:{
+        type:Boolean,
+        default:false
+    },
+    beds:{
+        type:Number,
+        default:1
+    },
+    bath:{
+        type:Number,
+        default:1
+    },
+    price:{
+        type:Number,
+        required:true
+    },
+    offerPrice:{
+        type:Number
+    },
+    views:{
+        type:Number, 
+        default:0
+    }
+})
+
+const Post=mongoose.model('Post', postSchema)
+module.exports=Post
