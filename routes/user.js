@@ -1,12 +1,12 @@
-const express=require('express')
-const getUserHandler = require('../controllers/api/getUserHandler')
-const { userPicture } = require('../middleware/multerMiddleware')
-const editUserHandler=require('../controllers/api/editUserHandler')
-const getUserPosts = require('../controllers/api/getUserPosts')
-const getUserComments = require('../controllers/api/getUserComments')
-const router=express.Router()
-router.post('/', getUserHandler)
-router.put('/', userPicture.single('user'), editUserHandler)
-router.post('/post', getUserPosts)
-router.post('/comments', getUserComments)
-module.exports=getUserHandler
+const express = require("express");
+const getUserHandler = require("../controllers/api/getUserHandler");
+const { userPicture } = require("../middleware/multerMiddleware");
+const editUserHandler = require("../controllers/api/editUserHandler");
+const getUserPosts = require("../controllers/api/getUserPosts");
+const getUserComments = require("../controllers/api/getUserComments");
+const router = express.Router();
+router.get("/:userId", getUserHandler);
+router.put("/:id", userPicture.single("user"), editUserHandler);
+router.get("/post/:id", getUserPosts);
+router.get("/comments/:id", getUserComments);
+module.exports = router;

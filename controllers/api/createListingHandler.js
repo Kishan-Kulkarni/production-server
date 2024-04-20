@@ -25,11 +25,12 @@ const handleCreateListing=async (req, res)=>{
     }
     const {username, name, description , address, sell, parking, furnished, offer, beds, bath, price, offerPrice}=req.body
     const foundUser=await User.findOne({name:username}).exec()
+    let result=0;
     if(!foundUser){
         return res.status(400).send(`The username ${username} was not found`)
     }
     if(offer){
-        const result=await Post.create({
+      result=await Post.create({
             userId:foundUser._id,
             name,
             description,
@@ -45,7 +46,7 @@ const handleCreateListing=async (req, res)=>{
             pictureURLs:paths
         })
     }else{
-        const result=await Post.create({
+      result=await Post.create({
             userId:foundUser._id,
             name,
             description,
@@ -60,7 +61,7 @@ const handleCreateListing=async (req, res)=>{
             pictureURLs:paths
         })
     }
-    res.status(204).send('The post sucessfully created')
+    res.status(200).json({result})
 }
 
 module.exports=handleCreateListing

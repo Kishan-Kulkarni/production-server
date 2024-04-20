@@ -1,11 +1,10 @@
-const express=require('express')
-const getListingHandler = require('../controllers/api/getListingHandler')
-const getAllListings = require('../controllers/api/getAllListing')
-const updateViews = require('../controllers/api/updateViews')
-const getPostComment = require('../controllers/api/getPostComments')
-const router=express.Router()
-router.get('/', getAllListings)
-router.get('/:postId', getListingHandler)
-router.post('/"postId', updateViews)
-router.get('/comment', getPostComment)
-module.exports=router
+const express = require("express");
+const getListingHandler = require("../controllers/api/getListingHandler");
+const getAllListings = require("../controllers/api/getAllListing");
+const updateViews = require("../controllers/api/updateViews");
+const getPostComment = require("../controllers/api/getPostComments");
+const router = express.Router();
+router.post("/", getAllListings);
+router.get("/:postId", getListingHandler);
+router.get("/:postId/comment", getPostComment);
+module.exports = router;
