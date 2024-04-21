@@ -1,6 +1,7 @@
 const s3 = require("../../config/s3Config");
 const User = require("../../models/User");
 const Post = require("../../models/Post");
+const mongoose = require("mongoose");
 const bucketName = process.env.AWS_BUCKET_NAME;
 const getFileStream = (key) => {
   const downloadParams = {
@@ -11,7 +12,7 @@ const getFileStream = (key) => {
 };
 const getListingHandler = async (req, res) => {
   const postId = req.params.postId;
-  if (!postId) {
+  if (!postId || !mongoose.Types.ObjectId.isValid(postId)) {
     return res.status(400).send("Invalid postId");
   }
   const foundPost = await Post.findById(postId);

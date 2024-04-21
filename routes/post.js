@@ -4,7 +4,7 @@ const getAllListings = require("../controllers/api/getAllListing");
 const updateViews = require("../controllers/api/updateViews");
 const getPostComment = require("../controllers/api/getPostComments");
 const router = express.Router();
-router.post("/", getAllListings);
+router.get("/:start/:type/:offer/:furnished/:parking", getAllListings);
 router.get("/:postId", getListingHandler);
 router.get("/:postId/comment", getPostComment);
 module.exports = router;

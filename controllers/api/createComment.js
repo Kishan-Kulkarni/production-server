@@ -9,6 +9,6 @@ const createComment = async (req, res) => {
     postId,
     content,
   });
-  return res.status(204).send("Comment has been  created.");
+  return res.status(200).json({ result });
 };
 module.exports = createComment;
